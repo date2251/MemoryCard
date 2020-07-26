@@ -1,36 +1,26 @@
 <template>
-	<div id="app">
-		<table>
-			<tbody>
-				<tr>
-					<th>ID</th>
-					<th>数字</th>
-					<th>マーク</th>
-				</tr>
-				<tr v-for="c in cards" :key="c.id">
-					<td>{{ c.id }}</td>
-					<td>{{ c.num }}</td>
-					<td>{{ c.mark }}</td>
-				</tr>
-			</tbody>
-		</table>
+	<div>
+		<router-view></router-view>
 	</div>
 </template>
 
 <script>
-import axios from 'axios';
+import Vue from 'vue';
+import VueRouter from 'vue-router'
+
+import CardIndexPage from 'CardIndexPage.vue'
+
+const router = new VueRouter({
+	routes: [
+		{ path: '/',
+			component: CardIndexPage }
+	]
+})
+
+Vue.use(VueRouter)
 
 export default {
-  data: function () {
-    return {
-			cards: []
-    }
-  },
-	mounted () {
-		axios
-			.get('/api/v1/cards.json')
-			.then(response => (this.cards = response.data))
-	}
+	router
 }
 </script>
 
