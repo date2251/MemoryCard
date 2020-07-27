@@ -8,12 +8,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 
-import CardIndexPage from 'CardIndexPage.vue'
+import GameIndexPage from 'GameIndexPage.vue'
 
 const router = new VueRouter({
 	routes: [
 		{ path: '/',
-			component: CardIndexPage }
+			component: GameIndexPage }
 	]
 })
 
