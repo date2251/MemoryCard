@@ -118,12 +118,22 @@ p {
 
 .card {
 	border: 1px solid;
+	width: 150px;
+	height: 200px;
 }
 
 .opened {
 	border: 1px solid red;
 	transform: rotateY( 180deg );
 	transition: transform 1s ease;
+	background-image:url(./images/card_back.png);
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 200px;
+	content: none;
+	text-indent:100%;
+	white-space:nowrap;
+	overflow:hidden;
 }
 
 .hitted {
