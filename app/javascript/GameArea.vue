@@ -1,24 +1,24 @@
 <template>
-	<div id="app">
+	<div id="app" style="width: 80%">
 		<table>
 			<tr>
 				<td v-for="i in 9">
 					<div class="card" v-on:click='isClick(i)' v-bind:class='{opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
-						<img :src="cards[i-1].src" style="width: 150px; height: 200px;">
+						<img :src="cards[i-1].src">
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td v-for="i in 9">
 					<div class="card" v-on:click='isClick(i+9)' v-bind:class='{opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
-						<img :src="cards[i+8].src" style="width: 150px; height: 200px;">
+						<img :src="cards[i+8].src">
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td v-for="i in 8">
 					<div class="card" v-on:click='isClick(i+18)' v-bind:class='{opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
-						<img :src="cards[i+17].src" style="width: 150px; height: 200px;">
+						<img :src="cards[i+17].src">
 					</div>
 				</td>
 			</tr>
@@ -148,10 +148,12 @@ p {
   text-align: center;
 }
 
+img {
+	width: 100%;
+}
+
 .card {
 	border: 1px solid;
-	width: 150px;
-	height: 200px;
 }
 
 .opened {
