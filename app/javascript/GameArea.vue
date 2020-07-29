@@ -150,6 +150,7 @@ p {
 
 img {
 	width: 100%;
+	vertical-align: middle;
 }
 
 .card {
@@ -164,8 +165,7 @@ img {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position:center;
-	width: 150px;
-	height: 200px;
+	width: 100%;
 	content: none;
 	text-indent:100%;
 	white-space:nowrap;
