@@ -9,11 +9,15 @@ import Vue from 'vue';
 import VueRouter from 'vue-router'
 
 import GameIndexPage from 'GameIndexPage.vue'
+import RankingPage from 'RankingPage.vue'
 
 const router = new VueRouter({
 	routes: [
 		{ path: '/',
-			component: GameIndexPage }
+			component: GameIndexPage },
+		{ path: '/ranking',
+			name: 'RankingPage',
+			component: RankingPage }
 	]
 })
 

@@ -3,7 +3,7 @@
 		<nav id="gnav">
 			<ul class="inner">
 				<li><a href="#">ホーム</a></li>
-				<li><a href="#">他のゲームで遊ぶ</a></li>
+				<li><router-link :to="{ name: 'RankingPage' }">ランキング</router-link></li>
 				<li><a href="#">２ページ目</a></li>
 				<li><a href="#">３ページ目</a></li>
 				<li><a href="#">会社概要</a></li>
