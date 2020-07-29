@@ -1,29 +1,38 @@
 <template>
 	<div id="app" style="height: 570px; position: relative;">
-		<table>
-			<tr>
-				<td v-for="i in 9">
-					<div class="card" v-on:click='isClick(i)' v-bind:class='{opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
-						<img :src="cards[i-1].src">
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td v-for="i in 9">
-					<div class="card" v-on:click='isClick(i+9)' v-bind:class='{opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
-						<img :src="cards[i+8].src">
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td v-for="i in 8">
-					<div class="card" v-on:click='isClick(i+18)' v-bind:class='{opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
-						<img :src="cards[i+17].src">
-					</div>
-				</td>
-			</tr>
-		</table>
-		<div class="trynum">試行回数：{{count[0].turnnum}}</div>
+		<!-- クリア前 -->
+		<div v-if ='count[0].hitnum < 13'> 
+			<table>
+				<tr>
+					<td v-for="i in 9">
+						<div class="card" v-on:click='isClick(i)' v-bind:class='{opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
+							<img :src="cards[i-1].src">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td v-for="i in 9">
+						<div class="card" v-on:click='isClick(i+9)' v-bind:class='{opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
+							<img :src="cards[i+8].src">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td v-for="i in 8">
+						<div class="card" v-on:click='isClick(i+18)' v-bind:class='{opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
+							<img :src="cards[i+17].src">
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="trynum">試行回数：{{count[0].turnnum}}</div>
+		</div>
+		<!-- クリア後 -->
+		<div v-else>
+			<p>Clear</p>
+			<button @click='replay()'>もう一度遊ぶ</button>
+			<!-- <button @click='Register'>結果を登録する</button> -->
+		</div>
 	</div>
 </template>
 
@@ -86,8 +95,9 @@ export default {
 				{id: 25, num: 12, mark: 'club', isopened: false, ishit: false, src: image25},
 				{id: 26, num: 13, mark: 'club', isopened: false, ishit: false, src: image26}
 			],
+			// カウント変数 //
 			count: [
-				{clicknum: 0, beforeid: 0, afterid: 0, turnnum: 0}
+				{clicknum: 0, beforeid: 0, afterid: 0, turnnum: 0, hitnum: 0}
 			]
 		}
   },
@@ -113,6 +123,7 @@ export default {
 				cards[cnt[0].beforeid - 1].ishit = true;
 				cards[cnt[0].afterid - 1].ishit = true;
 				cnt[0].clicknum = 0;
+				cnt[0].hitnum += 1;
 			}
 				
 			// 2枚以上はめくれない //
@@ -135,6 +146,10 @@ export default {
 					}
 				}
 			}
+		},
+		// リプレイ時リロード //
+		replay: function () {
+			this.$router.go({path: this.$router.currentRoute.path, force: true})
 		}
 	}
 }
