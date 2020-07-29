@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" style="height: 570px; position: relative;">
 		<table>
 			<tr>
 				<td v-for="i in 9">
@@ -23,7 +23,7 @@
 				</td>
 			</tr>
 		</table>
-		<div style="float: right">試行回数：{{count[0].turnnum}}</div>
+		<div class="trynum">試行回数：{{count[0].turnnum}}</div>
 	</div>
 </template>
 
@@ -157,7 +157,6 @@ img {
 }
 
 .opened {
-	border: 1px solid red;
 	transform: rotateY( 180deg );
 	transition: transform 1s ease;
 	background-image:url(./images/card_back.png);
@@ -176,5 +175,11 @@ img {
 	transform: rotateY( 180deg );
 	transition: transform 1s ease;
 	background-color: gray;
+}
+
+.trynum {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
 }
 </style>

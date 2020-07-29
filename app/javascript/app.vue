@@ -24,9 +24,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 p {
   font-size: 2em;
   text-align: center;
+}
+
+body {
+	width: 100%;
+	margin: 0;
 }
 </style>

@@ -3,7 +3,7 @@
 		<ul class="inner">
 			<li>ゲーム種別</li>
 			<li><a href="#">ルール</a></li>
-			<li><a href="#">２ページ目</a></li>
+			<li><a href="#">ランキング</a></li>
 			<li><a href="#">３ページ目</a></li>
 			<li><a href="#">会社概要</a></li>
 		</ul>

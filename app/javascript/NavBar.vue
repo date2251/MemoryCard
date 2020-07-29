@@ -3,7 +3,7 @@
 		<nav id="gnav">
 			<ul class="inner">
 				<li><a href="#">ホーム</a></li>
-				<li><a href="#">１ページ目</a></li>
+				<li><a href="#">他のゲームで遊ぶ</a></li>
 				<li><a href="#">２ページ目</a></li>
 				<li><a href="#">３ページ目</a></li>
 				<li><a href="#">会社概要</a></li>
@@ -18,6 +18,7 @@
 <style scoped>
 ul {
 	height: 50px;
+	margin-top: 0;
 	overflow: hidden;
 	list-style: none;
 	background-color: gray;
