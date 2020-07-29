@@ -1,8 +1,8 @@
 <template>
 	<div style="width: 15%; margin-left: 10px">
 		<ul class="inner">
-			<li><a href="#">ホーム</a></li>
-			<li><a href="#">１ページ目</a></li>
+			<li>ゲーム種別</li>
+			<li><a href="#">ルール</a></li>
 			<li><a href="#">２ページ目</a></li>
 			<li><a href="#">３ページ目</a></li>
 			<li><a href="#">会社概要</a></li>
@@ -17,7 +17,7 @@
 ul {
 	height: 100%;
 	margin-top: 0px;
-	padding: 10px;
+	padding: 0 5px;
 	overflow: hidden;
 	list-style: none;
 	background-color: gray;

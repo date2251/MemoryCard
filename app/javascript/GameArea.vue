@@ -1,5 +1,5 @@
 <template>
-	<div id="app" style="width: 80%">
+	<div id="app">
 		<table>
 			<tr>
 				<td v-for="i in 9">
@@ -154,7 +154,6 @@ img {
 }
 
 .card {
-	border: 1px solid;
 }
 
 .opened {
