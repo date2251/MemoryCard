@@ -102,11 +102,10 @@ export default {
 	},
 	methods: {
 		isClick: function (id) {
-			// 3秒後に全て裏にする関数 //
+			// 3秒後に裏にする関数 //
 			var reset = function (cards, cnt) {
-				for (var i = cards.length; i > 0; i--) {
-					cards[i-1].isopened = false;
-				}
+				cards[cnt[0].beforeid - 1].isopened = false;
+				cards[cnt[0].afterid - 1].isopened = false;
 				cnt[0].clicknum = 0;
 			}
 			// 1秒後にヒットにする関数 //
@@ -174,7 +173,6 @@ img {
 	transition-delay: 2.0s;
 	transform: rotateY( 180deg );
 	transition: transform 1s ease;
-	background-color: gray;
 }
 
 .trynum {
