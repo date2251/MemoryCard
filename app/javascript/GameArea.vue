@@ -31,12 +31,19 @@
 		<div v-else>
 			<p>Clear</p>
 			<button @click='replay()'>もう一度遊ぶ</button>
-			<!-- <button @click='Register'>結果を登録する</button> -->
+			<button @click='register()'>結果を登録する</button>
+			<form v-if ='count[0].regflg' @submit.prevent="registerpost" class="form__control">
+				<label for="" class="form__label">名前：</label>
+  			<input class="form__input" v-model='count[0].username' type="text" name="username">
+				<button type="submit">登録</button>
+			</form>
 		</div>
 	</div>
 </template>
 
 <script>
+import axios from 'axios'
+
 import image1 from "../assets/images/1.png"
 import image2 from "../assets/images/2.png"
 import image3 from "../assets/images/3.png"
@@ -97,7 +104,7 @@ export default {
 			],
 			// カウント変数 //
 			count: [
-				{clicknum: 0, beforeid: 0, afterid: 0, turnnum: 0, hitnum: 0}
+				{clicknum: 0, beforeid: 0, afterid: 0, turnnum: 0, hitnum: 0, regflg: false}
 			]
 		}
   },
@@ -150,7 +157,25 @@ export default {
 		// リプレイ時リロード //
 		replay: function () {
 			this.$router.go({path: this.$router.currentRoute.path, force: true})
-		}
+		},
+		// ランキング登録選択 //
+		register: function () {
+			this.count[0].regflg = true;
+		},
+		// ランキング登録API //
+		registerpost: function () {
+			axios
+				.post('/api/v1/rankings.json', {
+					username: this.count[0].username,
+					trynum: this.count[0].turnnum
+				})
+				.then(function (response) {
+					window.location.replace('/#/ranking')
+				})
+				.catch(function (error) {
+					console.log(error);
+				})
+    }
 	}
 }
 

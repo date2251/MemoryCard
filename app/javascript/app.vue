@@ -14,6 +14,7 @@ import RankingPage from 'RankingPage.vue'
 const router = new VueRouter({
 	routes: [
 		{ path: '/',
+			name: 'Home',
 			component: GameIndexPage },
 		{ path: '/ranking',
 			name: 'RankingPage',

@@ -8,4 +8,19 @@ class Api::V1::RankingsController < ApiController
 		rankings = Ranking.select(:username, :trynum).distinct.order(trynum: :asc)
 		render json: rankings
 	end
+
+	def create
+		rank = Ranking.new(rank_params)
+		if rank.save
+			render 	json: rank, status: :created
+		else
+			render json: { errors: rank.errors.full_messages }, status: :unprocessable_entity
+		end
+	end
+
+	private
+
+		def rank_params
+			params.fetch(:ranking, {}).permit(:username, :trynum)
+		end
 end
