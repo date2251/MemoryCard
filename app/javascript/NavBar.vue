@@ -3,10 +3,10 @@
 		<nav id="gnav">
 			<ul class="inner">
 				<li><a href="#">ホーム</a></li>
+				<li><a href="#">ルール</a></li>
 				<li><router-link :to="{ name: 'RankingPage' }">ランキング</router-link></li>
-				<li><a href="#">２ページ目</a></li>
-				<li><a href="#">３ページ目</a></li>
-				<li><a href="#">会社概要</a></li>
+				<li><a href="#">操作説明</a></li>
+				<li><a href="#">FrameWork</a></li>
 			</ul>
 		</nav>
 	</header>
