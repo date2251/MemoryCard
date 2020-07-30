@@ -1,6 +1,6 @@
 <template>
 	<footer>
-		<div>Copyright &copy; 2020 Bigmonstershift</div>
+		<div><span>Copyright &copy; 2020 Bigmonstershift</span></div>
 	</footer>
 </template>
 
@@ -10,9 +10,12 @@
 <style scoped>
 footer {
 	width: 100%;
-	text-align: center;
-	background-color: gray;
+	height: 50px;
 	position: absolute;
 	bottom: 0;
+	background-color: gray;
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 </style>

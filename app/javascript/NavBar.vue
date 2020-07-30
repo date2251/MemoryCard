@@ -2,7 +2,7 @@
 	<header>
 		<nav id="gnav">
 			<ul class="inner">
-				<li><a href="#">ホーム</a></li>
+				<li><router-link :to="{ name: 'Home' }">ホーム</router-link></li>
 				<li><a href="#">ルール</a></li>
 				<li><router-link :to="{ name: 'RankingPage' }">ランキング</router-link></li>
 				<li><a href="#">操作説明</a></li>

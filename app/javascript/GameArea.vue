@@ -1,42 +1,45 @@
 <template>
-	<div id="app" style="height: 570px; position: relative;">
+	<div id="app" style="position: relative;">
 		<!-- クリア前 -->
 		<div v-if ='count[0].hitnum < 13'> 
+			<div style="color: white">試行回数：{{count[0].turnnum}}</div>
 			<table>
 				<tr>
 					<td v-for="i in 9">
-						<div class="card" v-on:click='isClick(i)' v-bind:class='{opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
+						<div v-on:click='isClick(i)' v-bind:class='{card: !cards[i-1].isopened, opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
 							<img :src="cards[i-1].src">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td v-for="i in 9">
-						<div class="card" v-on:click='isClick(i+9)' v-bind:class='{opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
+						<div v-on:click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isopened, opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
 							<img :src="cards[i+8].src">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td v-for="i in 8">
-						<div class="card" v-on:click='isClick(i+18)' v-bind:class='{opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
+						<div v-on:click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isopened, opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
 							<img :src="cards[i+17].src">
 						</div>
 					</td>
 				</tr>
 			</table>
-			<div class="trynum">試行回数：{{count[0].turnnum}}</div>
 		</div>
 		<!-- クリア後 -->
 		<div v-else>
-			<p>Clear</p>
-			<button @click='replay()'>もう一度遊ぶ</button>
-			<button @click='register()'>結果を登録する</button>
-			<form v-if ='count[0].regflg' @submit.prevent="registerpost" class="form__control">
-				<label for="" class="form__label">名前：</label>
-  			<input class="form__input" v-model='count[0].username' type="text" name="username">
-				<button type="submit">登録</button>
-			</form>
+			<p class="resulttitle">Clear</p>
+			<p>試行回数：{{count[0].turnnum}}</p>
+			<div class="resultbtnwrap">
+				<button class="resultbtn" @click='replay()'>もう一度遊ぶ</button>
+				<button class="resultbtn" @click='register()'>結果を登録する</button>
+				<form v-if ='count[0].regflg' @submit.prevent="registerpost" class="form__control">
+					<label for="" class="form__label">名前：</label>
+  				<input class="form__input" v-model='count[0].username' type="text" name="username">
+					<button type="submit">登録</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </template>
@@ -183,7 +186,11 @@ export default {
 
 <style scoped>
 p {
-  font-size: 2em;
+	color: white;
+}
+
+.resulttitle {
+  font-size: 3em;
   text-align: center;
 }
 
@@ -193,11 +200,6 @@ img {
 }
 
 .card {
-}
-
-.opened {
-	transform: rotateY( 180deg );
-	transition: transform 1s ease;
 	background-image:url(./images/card_back.png);
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -209,15 +211,24 @@ img {
 	overflow:hidden;
 }
 
-.hitted {
-	transition-delay: 2.0s;
+.opened {
 	transform: rotateY( 180deg );
 	transition: transform 1s ease;
 }
 
-.trynum {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
+.hitted {
+	transition-delay: 2.0s;
+	transform: rotateY( 180deg );
+	transition: transform 1s ease;
+	visibility: hidden;
+}
+
+.resultbtnwrap {
+	text-align: center;
+}
+
+.resultbtn {
+	width: 150px;
+	height: 50px;
 }
 </style>

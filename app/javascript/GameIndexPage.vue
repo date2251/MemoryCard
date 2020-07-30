@@ -45,14 +45,15 @@ export default {
 
 .gameareawrap {
 	width: 80%;
-	height: 570px;
+	min-height: 570px;
 	padding: 10px;
 	background-color: green;
 }
 
 .startbtnwrap {
 	width: 80%;
-	height: 570px;
+	height: 590px;
+	padding: 10px;
 	text-align: center;
 	background-color: green;
 }

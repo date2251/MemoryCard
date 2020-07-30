@@ -48,4 +48,15 @@ export default {
 	justify-content: space-between;
 	padding: 0 5%;
 }
+
+table {
+	border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+	text-align: left;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+}
 </style>
