@@ -4,17 +4,27 @@
 			<ul class="inner">
 				<li><router-link :to="{ name: 'Home' }">ホーム</router-link></li>
 				<li><router-link :to="{ name: 'RankingPage' }">ランキング</router-link></li>
+				<!-- ルールモーダルウィンドウ -->
 				<li id="rule">
 					<button v-on:click="openRule">ルール</button>
-					<div id="overlay" v-show="ruleModal">
-						<div id="content">
+					<div class="overlay" v-show="ruleModal">
+						<div class="content">
    					  <p>26枚のカードが裏向きでバラバラに並べられています。プレイヤーはその中から2枚をめくり、その2枚が同じ番号だった場合カードが消えます。全てのカードを消す事が出来ればゲームクリアです。</p>
    					  <button class="modalnav" v-on:click="closeRule">閉じる</button>
    					</div>
     			</div>
 				</li>
-				<li><a href="#">操作説明</a></li>
-				<li><a href="#">FrameWork</a></li>
+				<!-- 操作説明モーダルウィンドウ -->
+				<li id="usage">
+					<button v-on:click="openUsage">操作説明</button>
+					<div class="overlay" v-show="usageModal">
+						<div class="content">
+							<p>クリックしてカードをめくる。カードの配置を記憶する。</p>
+							<button class="modalnav" v-on:click="closeUsage">閉じる</button>
+						</div>
+					</div>
+				</li>
+				<li><router-link :to="{ name: 'FrameworkPage' }">FrameWork</router-link></li>
 			</ul>
 		</nav>
 	</header>
@@ -24,16 +34,23 @@
 export default {
   data: function () {
 		return {
-    	ruleModal: false
+    	ruleModal: false,
+			usageModal: false
 		}
   },
   methods:{
-    openRule: function(){
+    openRule: function () {
       this.ruleModal = true
     },
-    closeRule: function(){
+    closeRule: function () {
       this.ruleModal = false
-    }
+    },
+		openUsage: function () {
+			this.usageModal = true
+		},
+		closeUsage: function () {
+			this.usageModal = false
+		}
   }
 }
 </script>
@@ -60,6 +77,10 @@ a {
 	text-decoration: none;
 }
 
+p {
+	text-align: left;
+}
+
 button {
 	color: white;
   box-sizing: initial;
@@ -73,7 +94,7 @@ button:focus {
 	outline: none;
 }
 
-#overlay{
+.overlay{
   /*　要素を重ねた時の順番　*/
   z-index:1;
 
@@ -92,7 +113,7 @@ button:focus {
 
 }
 
-#content{
+.content{
   z-index:2;
   width:50%;
   padding: 1em;

@@ -10,6 +10,7 @@ import VueRouter from 'vue-router'
 
 import GameIndexPage from 'GameIndexPage.vue'
 import RankingPage from 'RankingPage.vue'
+import FrameworkPage from 'FrameworkPage.vue'
 
 const router = new VueRouter({
 	routes: [
@@ -18,7 +19,10 @@ const router = new VueRouter({
 			component: GameIndexPage },
 		{ path: '/ranking',
 			name: 'RankingPage',
-			component: RankingPage }
+			component: RankingPage },
+		{ path: '/framework',
+			name: 'FrameworkPage',
+			component: FrameworkPage }
 	]
 })
 
