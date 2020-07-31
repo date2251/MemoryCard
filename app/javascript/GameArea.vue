@@ -143,7 +143,7 @@ export default {
 					this.cards[id-1].isopened = true;
 					this.count[0].clicknum += 1;
 					this.count[0].beforeid = id;
-				} else {
+				} else if (id != this.count[0].beforeid) {
 					// 2枚目 //
 					this.cards[id-1].isopened = true;
 					this.count[0].afterid = id;
