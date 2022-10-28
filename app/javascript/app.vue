@@ -12,6 +12,8 @@ import GameIndexPage from 'GameIndexPage.vue'
 import RankingPage from 'RankingPage.vue'
 import FrameworkPage from 'FrameworkPage.vue'
 
+Vue.use(VueRouter)
+
 const router = new VueRouter({
 	routes: [
 		{ path: '/',
@@ -26,11 +28,8 @@ const router = new VueRouter({
 	]
 })
 
-Vue.use(VueRouter)
+export default router
 
-export default {
-	router
-}
 </script>
 
 <style>
