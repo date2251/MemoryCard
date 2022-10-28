@@ -1,28 +1,46 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div>
+		<router-view></router-view>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router'
+
+import GameIndexPage from './GameIndexPage.vue'
+import RankingPage from './RankingPage.vue'
+import FrameworkPage from './FrameworkPage.vue'
+
+const router = new VueRouter({
+	routes: [
+		{ path: '/',
+			name: 'Home',
+			component: GameIndexPage },
+		{ path: '/ranking',
+			name: 'RankingPage',
+			component: RankingPage },
+		{ path: '/framework',
+			name: 'FrameworkPage',
+			component: FrameworkPage }
+	]
+})
+
+Vue.use(VueRouter)
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	router
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+p {
+  font-size: 2em;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+body {
+	width: 100%;
+	margin: 0;
 }
 </style>
