@@ -15,5 +15,10 @@
 - フロントエンド
   - Vue.js
 
-
-※実際のDockerイメージにつきましてはファイルサイズが大きかったため、ローカルに保存しております
+## 環境構築
+```
+docker-compose build;
+docker-compose run --rm web bundle install;
+docker-compose run --rm front npm install;
+docker-compose up -d;
+```
