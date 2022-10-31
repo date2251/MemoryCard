@@ -36,7 +36,7 @@ export default {
 	},
 	mounted () {
 		axios
-			.get('/api/v1/rankings.json')
+			.get('http://localhost:3000/api/v1/rankings.json')
 			.then(response => (this.rankings = response.data))
 	}
 }

@@ -119,6 +119,8 @@ export default {
 			this.cards[i-1] = this.cards[rnd];
 			this.cards[rnd] = tmp;
 		}
+    // 答え //
+    // console.log(this.cards.map((obj) => obj.num)); //
 	},
 	methods: {
 		isClick: function (id) {
@@ -168,10 +170,10 @@ export default {
 		// ランキング登録API //
 		registerpost: function () {
 			axios
-				.post('/api/v1/rankings.json', {
+        .post('http://localhost:3000/api/v1/rankings', { 'ranking' : { 
 					username: this.count[0].username,
 					trynum: this.count[0].turnnum
-				})
+				}})
 				.then(function (response) {
           console.log(response)
 					window.location.replace('/#/ranking')
