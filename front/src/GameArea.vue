@@ -45,8 +45,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 import image1 from "./assets/images/1.png"
 import image2 from "./assets/images/2.png"
 import image3 from "./assets/images/3.png"
@@ -120,7 +118,7 @@ export default {
 			this.cards[rnd] = tmp;
 		}
     // 答え //
-    // console.log(this.cards.map((obj) => obj.num)); //
+    console.log(this.cards.map((obj) => obj.num)); //
 	},
 	methods: {
 		isClick: function (id) {
@@ -169,8 +167,8 @@ export default {
 		},
 		// ランキング登録API //
 		registerpost: function () {
-			axios
-        .post('http://localhost:3000/api/v1/rankings', { 'ranking' : { 
+			this.$axios
+        .post('/api/v1/rankings', { 'ranking' : {
 					username: this.count[0].username,
 					trynum: this.count[0].turnnum
 				}})
