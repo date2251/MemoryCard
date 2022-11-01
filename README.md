@@ -21,4 +21,6 @@ docker-compose build;
 docker-compose run --rm web bundle install;
 docker-compose run --rm front npm install;
 docker-compose up -d;
+docker-compose run --rm web rails db:create;
+docker-compose run --rm web rails db:migrate;
 ```
