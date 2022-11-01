@@ -7,7 +7,7 @@
           <th>ユーザー</th><th>試行回数</th>
         </tr>
         <tr v-for="rank in rankings" :key="rank.id">
-          <td>{{ rank.username }}</td><td>{{ rank.trynum }}</td>
+          <td>{{ rank.user_name }}</td><td>{{ rank.try_num }}</td>
         </tr>
       </table>
       <sidebar></sidebar>

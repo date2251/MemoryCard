@@ -5,7 +5,7 @@ class Api::V1::RankingsController < ApiController
   end
 
 	def index
-		rankings = Ranking.select(:username, :trynum).distinct.order(trynum: :asc)
+		rankings = Ranking.select(:user_name, :try_num).distinct.order(try_num: :asc)
 		render json: rankings
 	end
 
@@ -21,6 +21,6 @@ class Api::V1::RankingsController < ApiController
 	private
 
 		def rank_params
-			params.fetch(:ranking, {}).permit(:username, :trynum)
+			params.fetch(:ranking, {}).permit(:user_name, :try_num)
 		end
 end

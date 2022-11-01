@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_07_29_153107) do
 
   create_table "rankings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "username"
-    t.integer "trynum"
+    t.string "user_name"
+    t.integer "try_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
