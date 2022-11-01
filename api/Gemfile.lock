@@ -63,6 +63,7 @@ GEM
     byebug (11.1.3)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    diff-lcs (1.5.0)
     erubi (1.11.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -139,6 +140,24 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.6.0)
     rexml (3.2.5)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (5.1.2)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
+    rspec-request_describer (0.3.2)
+    rspec-support (3.12.0)
     rubocop (1.28.2)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
@@ -190,6 +209,8 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.6)
+  rspec-rails
+  rspec-request_describer
   rubocop
   rubocop-rspec
   seed-fu
