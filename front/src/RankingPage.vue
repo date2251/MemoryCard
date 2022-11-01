@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 import navbar from './NavBar.vue'
 import sidebar from './SideBar.vue'
 import footerarea from './FooterArea.vue'
@@ -35,8 +33,8 @@ export default {
 		}
 	},
 	mounted () {
-		axios
-			.get('http://localhost:3000/api/v1/rankings.json')
+		this.$axios
+			.get('/api/v1/rankings')
 			.then(response => (this.rankings = response.data))
 	}
 }
