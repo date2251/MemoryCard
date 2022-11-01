@@ -36,7 +36,7 @@
         <button class="resultbtn" @click='register()'>結果を登録する</button>
         <form v-if ='count[0].regflg' @submit.prevent="registerpost" class="form__control">
           <label for="" class="form__label">名前：</label>
-          <input class="form__input" v-model='count[0].username' type="text" name="username">
+          <input class="form__input" v-model='count[0].user_name' type="text" name="user_name">
           <button type="submit">登録</button>
         </form>
       </div>
@@ -169,8 +169,8 @@ export default {
     registerpost: function () {
       this.$axios
         .post('/api/v1/rankings', { 'ranking' : {
-          username: this.count[0].username,
-          trynum: this.count[0].turnnum
+          user_name: this.count[0].user_name,
+          try_num: this.count[0].turnnum
         }})
         .then(function (response) {
           console.log(response)

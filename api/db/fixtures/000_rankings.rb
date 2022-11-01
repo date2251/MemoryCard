@@ -1,5 +1,5 @@
 require 'faker'
 Ranking.seed do |s|
-    s.username = Faker::Name.unique.name
-    s.trynum = rand(1..255)
+    s.user_name = Faker::Name.unique.name
+    s.try_num = rand(1..255)
   end

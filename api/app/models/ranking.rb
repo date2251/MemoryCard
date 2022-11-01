@@ -1,3 +1,3 @@
 class Ranking < ApplicationRecord
-	validates :username, presence: true
+	validates :user_name, presence: true
 end
