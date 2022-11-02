@@ -202,18 +202,18 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
-  factory_bot_rails
+  factory_bot_rails (~> 6.2.0)
   faker
   listen (~> 3.2)
   mysql2 (>= 0.4.4)
   puma (~> 4.1)
-  rack-cors
+  rack-cors (= 1.1.1)
   rails (~> 6.0.6)
-  rspec-rails
-  rspec-request_describer
-  rubocop
-  rubocop-rspec
-  seed-fu
+  rspec-rails (~> 5.1.2)
+  rspec-request_describer (~> 0.3.2)
+  rubocop (~> 1.28.2)
+  rubocop-rspec (~> 2.10.0)
+  seed-fu (~> 2.3.9)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
