@@ -1,8 +1,8 @@
 <template>
   <div id="app" style="position: relative;">
     <!-- クリア前 -->
-    <div v-if ='count[0].hitnum < 13'>
-      <div style="color: white">試行回数：{{count[0].turnnum}}</div>
+    <div v-if ='count[0].hitNum < 13'>
+      <div style="color: white">試行回数：{{count[0].turnNum}}</div>
       <table>
         <tr>
           <td v-for="i in 9" :key="i">
@@ -30,11 +30,11 @@
     <!-- クリア後 -->
     <div v-else>
       <p class="resulttitle">Clear</p>
-      <p>試行回数：{{count[0].turnnum}}</p>
+      <p>試行回数：{{count[0].turnNum}}</p>
       <div class="resultbtnwrap">
         <button class="resultbtn" @click='replay()'>もう一度遊ぶ</button>
         <button class="resultbtn" @click='register()'>結果を登録する</button>
-        <form v-if ='count[0].regflg' @submit.prevent="registerpost" class="form__control">
+        <form v-if ='count[0].regFlg' @submit.prevent="registerpost" class="form__control">
           <label for="" class="form__label">名前：</label>
           <input class="form__input" v-model='count[0].user_name' type="text" name="user_name">
           <button type="submit">登録</button>
@@ -105,7 +105,7 @@ export default {
       ],
       // カウント変数 //
       count: [
-        {clicknum: 0, beforeid: 0, afterid: 0, turnnum: 0, hitnum: 0, regflg: false}
+        {clickNum: 0, beforeId: 0, afterId: 0, turnNum: 0, hitNum: 0, regFlg: false}
       ]
     }
   },
@@ -124,32 +124,32 @@ export default {
     isClick: function (id) {
       // 3秒後に裏にする関数 //
       var reset = function (cards, cnt) {
-        cards[cnt[0].beforeid - 1].isopened = false;
-        cards[cnt[0].afterid - 1].isopened = false;
-        cnt[0].clicknum = 0;
+        cards[cnt[0].beforeId - 1].isopened = false;
+        cards[cnt[0].afterId - 1].isopened = false;
+        cnt[0].clickNum = 0;
       }
       // 1秒後にヒットにする関数 //
       var hitset = function (cards, cnt) {
-        cards[cnt[0].beforeid - 1].ishit = true;
-        cards[cnt[0].afterid - 1].ishit = true;
-        cnt[0].clicknum = 0;
-        cnt[0].hitnum += 1;
+        cards[cnt[0].beforeId - 1].ishit = true;
+        cards[cnt[0].afterId - 1].ishit = true;
+        cnt[0].clickNum = 0;
+        cnt[0].hitNum += 1;
       }
 
       // 2枚以上はめくれない //
-      if (this.count[0].clicknum < 2) {
-        if (this.count[0].clicknum == 0) {
+      if (this.count[0].clickNum < 2) {
+        if (this.count[0].clickNum == 0) {
           // 1枚目 //
           this.cards[id-1].isopened = true;
-          this.count[0].clicknum += 1;
-          this.count[0].beforeid = id;
-        } else if (id != this.count[0].beforeid) {
+          this.count[0].clickNum += 1;
+          this.count[0].beforeId = id;
+        } else if (id != this.count[0].beforeId) {
           // 2枚目 //
           this.cards[id-1].isopened = true;
-          this.count[0].afterid = id;
-          this.count[0].clicknum += 1;
-          this.count[0].turnnum += 1;
-          if (this.cards[this.count[0].beforeid - 1].num == this.cards[id-1].num) {
+          this.count[0].afterId = id;
+          this.count[0].clickNum += 1;
+          this.count[0].turnNum += 1;
+          if (this.cards[this.count[0].beforeId - 1].num == this.cards[id-1].num) {
             setTimeout(hitset, 1200, this.cards, this.count);
           } else {
             setTimeout(reset, 3000, this.cards, this.count);
@@ -163,14 +163,14 @@ export default {
     },
     // ランキング登録選択 //
     register: function () {
-      this.count[0].regflg = true;
+      this.count[0].regFlg = true;
     },
     // ランキング登録API //
     registerpost: function () {
       this.$axios
         .post('/api/v1/rankings', { 'ranking' : {
           user_name: this.count[0].user_name,
-          try_num: this.count[0].turnnum
+          try_num: this.count[0].turnNum
         }})
         .then(function (response) {
           console.log(response)
