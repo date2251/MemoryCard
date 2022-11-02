@@ -15,4 +15,12 @@ RSpec.describe Api::V1::RankingsController, type: :request do
       expect(json.length).to eq Ranking.all.length
     end
   end
+
+  describe 'POST /api/v1/rankings' do
+    let(:params) { { ranking: attributes_for(:ranking) } }
+
+    it { is_expected.to eq 201 }
+
+    it { expect { subject }.to change(Ranking, :count).by(1) }
+  end
 end
