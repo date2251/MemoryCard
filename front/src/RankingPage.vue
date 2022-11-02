@@ -7,7 +7,7 @@
           <th>ユーザー</th><th>試行回数</th>
         </tr>
         <tr v-for="rank in rankings" :key="rank.id">
-          <td>{{ rank.user_name }}</td><td>{{ rank.try_num }}</td>
+          <td>{{ rank.userName }}</td><td>{{ rank.tryNum }}</td>
         </tr>
       </table>
       <sidebar></sidebar>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { deserialize } from 'deserialize-json-api'
 import navbar from './NavBar.vue'
 import sidebar from './SideBar.vue'
 import footerarea from './FooterArea.vue'
@@ -35,7 +36,9 @@ export default {
   mounted () {
     this.$axios
       .get('/api/v1/rankings')
-      .then(response => (this.rankings = response.data))
+      .then(({ data }) => {
+        this.rankings = deserialize(data).data
+      })
   }
 }
 </script>
