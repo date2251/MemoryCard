@@ -1,7 +1,4 @@
 https://master--roaring-liger-4fccc9.netlify.app/
-
-(静的ホスティング)
-
 ## 概要 
 一人用の神経衰弱ゲーム
 | | |
