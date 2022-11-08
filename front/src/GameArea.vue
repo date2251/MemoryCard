@@ -1,8 +1,8 @@
 <template>
   <div id="app" style="position: relative;">
     <!-- クリア前 -->
-    <div v-if ='count[0].hitNum < 13'>
-      <div style="color: white">試行回数：{{count[0].turnNum}}</div>
+    <div v-if ='hitNum < 13'>
+      <div style="color: white">試行回数：{{turnNum}}</div>
       <table>
         <tr>
           <td v-for="i in 9" :key="i">
@@ -30,13 +30,13 @@
     <!-- クリア後 -->
     <div v-else>
       <p class="resulttitle">Clear</p>
-      <p>試行回数：{{count[0].turnNum}}</p>
+      <p>試行回数：{{turnNum}}</p>
       <div class="resultbtnwrap">
         <button class="resultbtn" @click='replay()'>もう一度遊ぶ</button>
         <button class="resultbtn" @click='register()'>結果を登録する</button>
-        <form v-if ='count[0].regFlg' @submit.prevent="registerpost" class="form__control">
+        <form v-if ='regFlg' @submit.prevent="registerpost" class="form__control">
           <label for="" class="form__label">名前：</label>
-          <input class="form__input" v-model='count[0].user_name' type="text" name="user_name">
+          <input class="form__input" v-model='userName' type="text" name="user_name">
           <button type="submit">登録</button>
         </form>
       </div>
@@ -104,9 +104,9 @@ export default {
         {id: 26, num: 13, mark: 'club', isOpened: false, isHit: false, src: image26}
       ],
       // カウント変数 //
-      count: [
-        {clickNum: 0, beforeId: 0, afterId: 0, turnNum: 0, hitNum: 0, regFlg: false}
-      ]
+      clickNum: 0, beforeId: 0, afterId: 0, turnNum: 0, hitNum: 0,
+      regFlg: false,
+      userName: ''
     }
   },
   created () {
@@ -137,19 +137,19 @@ export default {
       }
 
       // 2枚以上はめくれない //
-      if (this.count[0].clickNum < 2) {
-        if (this.count[0].clickNum == 0) {
+      if (this.clickNum < 2) {
+        if (this.clickNum == 0) {
           // 1枚目 //
           this.cards[id-1].isOpened = true;
-          this.count[0].clickNum += 1;
-          this.count[0].beforeId = id;
-        } else if (id != this.count[0].beforeId) {
+          this.clickNum += 1;
+          this.beforeId = id;
+        } else if (id != this.beforeId) {
           // 2枚目 //
           this.cards[id-1].isOpened = true;
-          this.count[0].afterId = id;
-          this.count[0].clickNum += 1;
-          this.count[0].turnNum += 1;
-          if (this.cards[this.count[0].beforeId - 1].num == this.cards[id-1].num) {
+          this.afterId = id;
+          this.clickNum += 1;
+          this.turnNum += 1;
+          if (this.cards[this.beforeId - 1].num == this.cards[id-1].num) {
             setTimeout(hitset, 1200, this.cards, this.count);
           } else {
             setTimeout(reset, 3000, this.cards, this.count);
@@ -163,14 +163,14 @@ export default {
     },
     // ランキング登録選択 //
     register: function () {
-      this.count[0].regFlg = true;
+      this.regFlg = true;
     },
     // ランキング登録API //
     registerpost: function () {
       this.$axios
         .post('/api/v1/rankings', { 'ranking' : {
-          user_name: this.count[0].user_name,
-          try_num: this.count[0].turnNum
+          user_name: this.userName,
+          try_num: this.turnNum
         }})
         .then(function (response) {
           console.log(response)
