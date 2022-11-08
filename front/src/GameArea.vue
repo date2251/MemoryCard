@@ -6,21 +6,21 @@
       <table>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div v-on:click='isClick(i)' v-bind:class='{card: !cards[i-1].isopened, opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
+            <div v-on:click='isClick(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].ishit}'>
               <img :src="cards[i-1].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div v-on:click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isopened, opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
+            <div v-on:click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].ishit}'>
               <img :src="cards[i+8].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 8" :key="i">
-            <div v-on:click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isopened, opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
+            <div v-on:click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].ishit}'>
               <img :src="cards[i+17].src">
             </div>
           </td>
@@ -76,32 +76,32 @@ export default {
   data: function () {
     return {
       cards: [
-        {id: 1, num: 1, mark: 'spade', isopened: false, ishit: false, src: image1},
-        {id: 2, num: 2, mark: 'spade', isopened: false, ishit: false, src: image2},
-        {id: 3, num: 3, mark: 'spade', isopened: false, ishit: false, src: image3},
-        {id: 4, num: 4, mark: 'spade', isopened: false, ishit: false, src: image4},
-        {id: 5, num: 5, mark: 'spade', isopened: false, ishit: false, src: image5},
-        {id: 6, num: 6, mark: 'spade', isopened: false, ishit: false, src: image6},
-        {id: 7, num: 7, mark: 'spade', isopened: false, ishit: false, src: image7},
-        {id: 8, num: 8, mark: 'spade', isopened: false, ishit: false, src: image8},
-        {id: 9, num: 9, mark: 'spade', isopened: false, ishit: false, src: image9},
-        {id: 10, num: 10, mark: 'spade', isopened: false, ishit: false, src: image10},
-        {id: 11, num: 11, mark: 'spade', isopened: false, ishit: false, src: image11},
-        {id: 12, num: 12, mark: 'spade', isopened: false, ishit: false, src: image12},
-        {id: 13, num: 13, mark: 'spade', isopened: false, ishit: false, src: image13},
-        {id: 14, num: 1, mark: 'club', isopened: false, ishit: false, src: image14},
-        {id: 15, num: 2, mark: 'club', isopened: false, ishit: false, src: image15},
-        {id: 16, num: 3, mark: 'club', isopened: false, ishit: false, src: image16},
-        {id: 17, num: 4, mark: 'club', isopened: false, ishit: false, src: image17},
-        {id: 18, num: 5, mark: 'club', isopened: false, ishit: false, src: image18},
-        {id: 19, num: 6, mark: 'club', isopened: false, ishit: false, src: image19},
-        {id: 20, num: 7, mark: 'club', isopened: false, ishit: false, src: image20},
-        {id: 21, num: 8, mark: 'club', isopened: false, ishit: false, src: image21},
-        {id: 22, num: 9, mark: 'club', isopened: false, ishit: false, src: image22},
-        {id: 23, num: 10, mark: 'club', isopened: false, ishit: false, src: image23},
-        {id: 24, num: 11, mark: 'club', isopened: false, ishit: false, src: image24},
-        {id: 25, num: 12, mark: 'club', isopened: false, ishit: false, src: image25},
-        {id: 26, num: 13, mark: 'club', isopened: false, ishit: false, src: image26}
+        {id: 1, num: 1, mark: 'spade', isOpened: false, ishit: false, src: image1},
+        {id: 2, num: 2, mark: 'spade', isOpened: false, ishit: false, src: image2},
+        {id: 3, num: 3, mark: 'spade', isOpened: false, ishit: false, src: image3},
+        {id: 4, num: 4, mark: 'spade', isOpened: false, ishit: false, src: image4},
+        {id: 5, num: 5, mark: 'spade', isOpened: false, ishit: false, src: image5},
+        {id: 6, num: 6, mark: 'spade', isOpened: false, ishit: false, src: image6},
+        {id: 7, num: 7, mark: 'spade', isOpened: false, ishit: false, src: image7},
+        {id: 8, num: 8, mark: 'spade', isOpened: false, ishit: false, src: image8},
+        {id: 9, num: 9, mark: 'spade', isOpened: false, ishit: false, src: image9},
+        {id: 10, num: 10, mark: 'spade', isOpened: false, ishit: false, src: image10},
+        {id: 11, num: 11, mark: 'spade', isOpened: false, ishit: false, src: image11},
+        {id: 12, num: 12, mark: 'spade', isOpened: false, ishit: false, src: image12},
+        {id: 13, num: 13, mark: 'spade', isOpened: false, ishit: false, src: image13},
+        {id: 14, num: 1, mark: 'club', isOpened: false, ishit: false, src: image14},
+        {id: 15, num: 2, mark: 'club', isOpened: false, ishit: false, src: image15},
+        {id: 16, num: 3, mark: 'club', isOpened: false, ishit: false, src: image16},
+        {id: 17, num: 4, mark: 'club', isOpened: false, ishit: false, src: image17},
+        {id: 18, num: 5, mark: 'club', isOpened: false, ishit: false, src: image18},
+        {id: 19, num: 6, mark: 'club', isOpened: false, ishit: false, src: image19},
+        {id: 20, num: 7, mark: 'club', isOpened: false, ishit: false, src: image20},
+        {id: 21, num: 8, mark: 'club', isOpened: false, ishit: false, src: image21},
+        {id: 22, num: 9, mark: 'club', isOpened: false, ishit: false, src: image22},
+        {id: 23, num: 10, mark: 'club', isOpened: false, ishit: false, src: image23},
+        {id: 24, num: 11, mark: 'club', isOpened: false, ishit: false, src: image24},
+        {id: 25, num: 12, mark: 'club', isOpened: false, ishit: false, src: image25},
+        {id: 26, num: 13, mark: 'club', isOpened: false, ishit: false, src: image26}
       ],
       // カウント変数 //
       count: [
@@ -124,8 +124,8 @@ export default {
     isClick: function (id) {
       // 3秒後に裏にする関数 //
       var reset = function (cards, cnt) {
-        cards[cnt[0].beforeId - 1].isopened = false;
-        cards[cnt[0].afterId - 1].isopened = false;
+        cards[cnt[0].beforeId - 1].isOpened = false;
+        cards[cnt[0].afterId - 1].isOpened = false;
         cnt[0].clickNum = 0;
       }
       // 1秒後にヒットにする関数 //
@@ -140,12 +140,12 @@ export default {
       if (this.count[0].clickNum < 2) {
         if (this.count[0].clickNum == 0) {
           // 1枚目 //
-          this.cards[id-1].isopened = true;
+          this.cards[id-1].isOpened = true;
           this.count[0].clickNum += 1;
           this.count[0].beforeId = id;
         } else if (id != this.count[0].beforeId) {
           // 2枚目 //
-          this.cards[id-1].isopened = true;
+          this.cards[id-1].isOpened = true;
           this.count[0].afterId = id;
           this.count[0].clickNum += 1;
           this.count[0].turnNum += 1;
