@@ -6,21 +6,21 @@
       <li><router-link :to="{ name: 'RankingPage' }"><img :src="images[1].src"></router-link></li>
       <!-- ルールモーダルウィンドウ -->
       <li>
-        <button v-on:click="openRule"><img :src="images[0].src"></button>
+        <button @click="openRule"><img :src="images[0].src"></button>
         <div class="overlay" v-show="ruleModal">
           <div class="content">
             <p>26枚のカードが裏向きでバラバラに並べられています。プレイヤーはその中から2枚をめくり、その2枚が同じ番号だった場合カードが消えます。全てのカードを消す事が出来ればゲームクリアです。</p>
-            <button class="modalside" v-on:click="closeRule">閉じる</button>
+            <button class="modalSide" @click="closeRule">閉じる</button>
           </div>
         </div>
       </li>
       <!-- 操作説明モーダルウィンドウ -->
       <li>
-        <button v-on:click="openUsage"><img :src="images[2].src"></button>
+        <button @click="openUsage"><img :src="images[2].src"></button>
         <div class="overlay" v-show="usageModal">
           <div class="content">
             <p>クリックしてカードをめくる。カードの配置を記憶する。</p>
-            <button class="modalside" v-on:click="closeUsage">閉じる</button>
+            <button class="modalSide" @click="closeUsage">閉じる</button>
           </div>
         </div>
       </li>
@@ -136,7 +136,7 @@ button img {
   background:#fff;
 }
 
-.modalside {
+.modalSide {
   width: 100px;
   height: 50px;
 }

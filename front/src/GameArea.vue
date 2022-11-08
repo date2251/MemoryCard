@@ -31,9 +31,9 @@
     <div v-else>
       <p class="resulttitle">Clear</p>
       <p>試行回数：{{turnNum}}</p>
-      <div class="resultbtnwrap">
-        <button class="resultbtn" @click='replay()'>もう一度遊ぶ</button>
-        <button class="resultbtn" @click='register()'>結果を登録する</button>
+      <div class="resultBtnWrap">
+        <button class="resultBtn" @click='replay()'>もう一度遊ぶ</button>
+        <button class="resultBtn" @click='register()'>結果を登録する</button>
         <form v-if ='regFlg' @submit.prevent="registerpost" class="form__control">
           <label for="" class="form__label">名前：</label>
           <input class="form__input" v-model='userName' type="text" name="user_name">
@@ -221,11 +221,11 @@ img {
   visibility: hidden;
 }
 
-.resultbtnwrap {
+.resultBtnWrap {
   text-align: center;
 }
 
-.resultbtn {
+.resultBtn {
   width: 150px;
   height: 50px;
 }

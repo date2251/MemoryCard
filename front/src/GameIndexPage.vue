@@ -1,36 +1,40 @@
 <template>
   <div>
-    <navbar></navbar>
+    <nav-bar/>
     <div class="content">
-      <div v-if="gameStart" class="gameareawrap"><component :is="gameStart"></component></div>
-      <div v-else class="startbtnwrap" ><button @click='ViewGameArea' class="startbtn">開始</button></div>
-      <sidebar></sidebar>
+      <div v-if="isShowGameArea" class="gameAreaWrap">
+        <game-area/>
+      </div>
+      <div v-else class="startBtnWrap" >
+        <button @click='showGameArea' class="startBtn">開始</button>
+      </div>
+      <side-bar/>
     </div>
-    <footerarea></footerarea>
+    <footer-area/>
   </div>
 </template>
 
 <script>
-import navbar from './NavBar.vue'
-import sidebar from './SideBar.vue'
-import gamearea from './GameArea.vue'
-import footerarea from './FooterArea.vue'
+import navBar from './NavBar.vue'
+import sideBar from './SideBar.vue'
+import gameArea from './GameArea.vue'
+import footerArea from './FooterArea.vue'
 
 export default {
   components: {
-    gamearea,
-    sidebar,
-    navbar,
-    footerarea
+    gameArea,
+    sideBar,
+    navBar,
+    footerArea
   },
   data () {
     return {
-      gameStart: ''
+      isShowGameArea: false
     }
   },
   methods: {
-    ViewGameArea(){
-      this.gameStart = "gamearea"
+    showGameArea(){
+      this.isShowGameArea = true
     }
   }
 }
@@ -43,14 +47,14 @@ export default {
   padding: 0 5%;
 }
 
-.gameareawrap {
+.gameAreaWrap {
   width: 80%;
   min-height: 570px;
   padding: 10px;
   background-color: green;
 }
 
-.startbtnwrap {
+.startBtnWrap {
   width: 80%;
   height: 590px;
   padding: 10px;
@@ -58,7 +62,7 @@ export default {
   background-color: green;
 }
 
-.startbtn {
+.startBtn {
   width: 200px;
   height: 50px;
   font-size: 2em;

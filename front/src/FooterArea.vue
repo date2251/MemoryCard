@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div><span>Copyright &copy; 2020 Bigmonstershift</span></div>
+    <div><span>Copyright &copy; 2020 date2251</span></div>
   </footer>
 </template>
 

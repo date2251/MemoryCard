@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar></navbar>
+    <nav-bar/>
     <div class="content">
       <div class="framework-wrapper">
         <h2>プラットフォーム</h2>
@@ -16,25 +16,25 @@
         <h2>リンク</h2>
           <ul>
             <li>GitHub</li>
-            <li><a href="https://github.com/bigmonstershift?tab=repositories">https://github.com/bigmonstershift?tab=repositories</a></li>
+            <li><a href="https://github.com/date2251?tab=repositories">https://github.com/date2251?tab=repositories</a></li>
           </ul>
       </div>
-      <sidebar></sidebar>
+      <side-bar/>
     </div>
-    <footerarea></footerarea>
+    <footer-area/>
   </div>
 </template>
 
 <script>
-import navbar from './NavBar.vue'
-import sidebar from './SideBar.vue'
-import footerarea from './FooterArea.vue'
+import navBar from './NavBar.vue'
+import sideBar from './SideBar.vue'
+import footerArea from './FooterArea.vue'
 
 export default {
   components: {
-    sidebar,
-    navbar,
-    footerarea
+    sideBar,
+    navBar,
+    footerArea
   }
 }
 </script>
