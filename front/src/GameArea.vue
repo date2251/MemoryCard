@@ -111,9 +111,9 @@ export default {
   },
   created () {
     // 順番をランダム化 //
-    for (var i=this.cards.length; i>0; i--) {
-      var rnd = Math.floor(Math.random() * (this.cards.length - 1));
-      var tmp = this.cards[i-1];
+    for (let i=this.cards.length; i>0; i--) {
+      let rnd = Math.floor(Math.random() * (this.cards.length - 1));
+      let tmp = this.cards[i-1];
       this.cards[i-1] = this.cards[rnd];
       this.cards[rnd] = tmp;
     }
