@@ -3,7 +3,7 @@
     <navbar></navbar>
     <div class="content">
       <div v-if="gameStart" class="gameareawrap"><component :is="gameStart"></component></div>
-      <div v-else class="startbtnwrap" ><button @click='ViewGameArea' class="startbtn">ゲーム開始</button></div>
+      <div v-else class="startbtnwrap" ><button @click='ViewGameArea' class="startbtn">開始</button></div>
       <sidebar></sidebar>
     </div>
     <footerarea></footerarea>

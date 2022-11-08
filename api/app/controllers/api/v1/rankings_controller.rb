@@ -8,7 +8,7 @@ module Api
 
       def index
         rankings = Ranking.select(:user_name, :try_num).distinct.order(try_num: :asc)
-        render json: rankings
+        render json: RankingSerializer.new(rankings).serializable_hash
       end
 
       def create

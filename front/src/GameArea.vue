@@ -1,26 +1,26 @@
 <template>
   <div id="app" style="position: relative;">
     <!-- クリア前 -->
-    <div v-if ='count[0].hitnum < 13'>
-      <div style="color: white">試行回数：{{count[0].turnnum}}</div>
+    <div v-if ='hitNum < 13'>
+      <div style="color: white">試行回数：{{turnNum}}</div>
       <table>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div v-on:click='isClick(i)' v-bind:class='{card: !cards[i-1].isopened, opened:cards[i-1].isopened, hitted:cards[i-1].ishit}'>
+            <div @click='turnOver(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].isHit}'>
               <img :src="cards[i-1].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div v-on:click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isopened, opened:cards[i+8].isopened, hitted:cards[i+8].ishit}'>
+            <div @click='turnOver(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].isHit}'>
               <img :src="cards[i+8].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 8" :key="i">
-            <div v-on:click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isopened, opened:cards[i+17].isopened, hitted:cards[i+17].ishit}'>
+            <div @click='turnOver(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].isHit}'>
               <img :src="cards[i+17].src">
             </div>
           </td>
@@ -30,13 +30,13 @@
     <!-- クリア後 -->
     <div v-else>
       <p class="resulttitle">Clear</p>
-      <p>試行回数：{{count[0].turnnum}}</p>
+      <p>試行回数：{{turnNum}}</p>
       <div class="resultbtnwrap">
         <button class="resultbtn" @click='replay()'>もう一度遊ぶ</button>
         <button class="resultbtn" @click='register()'>結果を登録する</button>
-        <form v-if ='count[0].regflg' @submit.prevent="registerpost" class="form__control">
+        <form v-if ='regFlg' @submit.prevent="registerpost" class="form__control">
           <label for="" class="form__label">名前：</label>
-          <input class="form__input" v-model='count[0].user_name' type="text" name="user_name">
+          <input class="form__input" v-model='userName' type="text" name="user_name">
           <button type="submit">登録</button>
         </form>
       </div>
@@ -76,83 +76,80 @@ export default {
   data: function () {
     return {
       cards: [
-        {id: 1, num: 1, mark: 'spade', isopened: false, ishit: false, src: image1},
-        {id: 2, num: 2, mark: 'spade', isopened: false, ishit: false, src: image2},
-        {id: 3, num: 3, mark: 'spade', isopened: false, ishit: false, src: image3},
-        {id: 4, num: 4, mark: 'spade', isopened: false, ishit: false, src: image4},
-        {id: 5, num: 5, mark: 'spade', isopened: false, ishit: false, src: image5},
-        {id: 6, num: 6, mark: 'spade', isopened: false, ishit: false, src: image6},
-        {id: 7, num: 7, mark: 'spade', isopened: false, ishit: false, src: image7},
-        {id: 8, num: 8, mark: 'spade', isopened: false, ishit: false, src: image8},
-        {id: 9, num: 9, mark: 'spade', isopened: false, ishit: false, src: image9},
-        {id: 10, num: 10, mark: 'spade', isopened: false, ishit: false, src: image10},
-        {id: 11, num: 11, mark: 'spade', isopened: false, ishit: false, src: image11},
-        {id: 12, num: 12, mark: 'spade', isopened: false, ishit: false, src: image12},
-        {id: 13, num: 13, mark: 'spade', isopened: false, ishit: false, src: image13},
-        {id: 14, num: 1, mark: 'club', isopened: false, ishit: false, src: image14},
-        {id: 15, num: 2, mark: 'club', isopened: false, ishit: false, src: image15},
-        {id: 16, num: 3, mark: 'club', isopened: false, ishit: false, src: image16},
-        {id: 17, num: 4, mark: 'club', isopened: false, ishit: false, src: image17},
-        {id: 18, num: 5, mark: 'club', isopened: false, ishit: false, src: image18},
-        {id: 19, num: 6, mark: 'club', isopened: false, ishit: false, src: image19},
-        {id: 20, num: 7, mark: 'club', isopened: false, ishit: false, src: image20},
-        {id: 21, num: 8, mark: 'club', isopened: false, ishit: false, src: image21},
-        {id: 22, num: 9, mark: 'club', isopened: false, ishit: false, src: image22},
-        {id: 23, num: 10, mark: 'club', isopened: false, ishit: false, src: image23},
-        {id: 24, num: 11, mark: 'club', isopened: false, ishit: false, src: image24},
-        {id: 25, num: 12, mark: 'club', isopened: false, ishit: false, src: image25},
-        {id: 26, num: 13, mark: 'club', isopened: false, ishit: false, src: image26}
+        {id: 1, num: 1, mark: 'spade', isOpened: false, isHit: false, src: image1},
+        {id: 2, num: 2, mark: 'spade', isOpened: false, isHit: false, src: image2},
+        {id: 3, num: 3, mark: 'spade', isOpened: false, isHit: false, src: image3},
+        {id: 4, num: 4, mark: 'spade', isOpened: false, isHit: false, src: image4},
+        {id: 5, num: 5, mark: 'spade', isOpened: false, isHit: false, src: image5},
+        {id: 6, num: 6, mark: 'spade', isOpened: false, isHit: false, src: image6},
+        {id: 7, num: 7, mark: 'spade', isOpened: false, isHit: false, src: image7},
+        {id: 8, num: 8, mark: 'spade', isOpened: false, isHit: false, src: image8},
+        {id: 9, num: 9, mark: 'spade', isOpened: false, isHit: false, src: image9},
+        {id: 10, num: 10, mark: 'spade', isOpened: false, isHit: false, src: image10},
+        {id: 11, num: 11, mark: 'spade', isOpened: false, isHit: false, src: image11},
+        {id: 12, num: 12, mark: 'spade', isOpened: false, isHit: false, src: image12},
+        {id: 13, num: 13, mark: 'spade', isOpened: false, isHit: false, src: image13},
+        {id: 14, num: 1, mark: 'club', isOpened: false, isHit: false, src: image14},
+        {id: 15, num: 2, mark: 'club', isOpened: false, isHit: false, src: image15},
+        {id: 16, num: 3, mark: 'club', isOpened: false, isHit: false, src: image16},
+        {id: 17, num: 4, mark: 'club', isOpened: false, isHit: false, src: image17},
+        {id: 18, num: 5, mark: 'club', isOpened: false, isHit: false, src: image18},
+        {id: 19, num: 6, mark: 'club', isOpened: false, isHit: false, src: image19},
+        {id: 20, num: 7, mark: 'club', isOpened: false, isHit: false, src: image20},
+        {id: 21, num: 8, mark: 'club', isOpened: false, isHit: false, src: image21},
+        {id: 22, num: 9, mark: 'club', isOpened: false, isHit: false, src: image22},
+        {id: 23, num: 10, mark: 'club', isOpened: false, isHit: false, src: image23},
+        {id: 24, num: 11, mark: 'club', isOpened: false, isHit: false, src: image24},
+        {id: 25, num: 12, mark: 'club', isOpened: false, isHit: false, src: image25},
+        {id: 26, num: 13, mark: 'club', isOpened: false, isHit: false, src: image26}
       ],
       // カウント変数 //
-      count: [
-        {clicknum: 0, beforeid: 0, afterid: 0, turnnum: 0, hitnum: 0, regflg: false}
-      ]
+      clickNum: 0, beforeId: 0, afterId: 0, turnNum: 0, hitNum: 0,
+      regFlg: false,
+      userName: ''
     }
   },
   created () {
     // 順番をランダム化 //
-    for (var i=this.cards.length; i>0; i--) {
-      var rnd = Math.floor(Math.random() * (this.cards.length - 1));
-      var tmp = this.cards[i-1];
+    for (let i=this.cards.length; i>0; i--) {
+      let rnd = Math.floor(Math.random() * (this.cards.length - 1));
+      let tmp = this.cards[i-1];
       this.cards[i-1] = this.cards[rnd];
       this.cards[rnd] = tmp;
     }
     // 答え //
-    console.log(this.cards.map((obj) => obj.num)); //
+    console.log(this.cards.map((obj) => obj.num));
   },
   methods: {
-    isClick: function (id) {
-      // 3秒後に裏にする関数 //
-      var reset = function (cards, cnt) {
-        cards[cnt[0].beforeid - 1].isopened = false;
-        cards[cnt[0].afterid - 1].isopened = false;
-        cnt[0].clicknum = 0;
-      }
-      // 1秒後にヒットにする関数 //
-      var hitset = function (cards, cnt) {
-        cards[cnt[0].beforeid - 1].ishit = true;
-        cards[cnt[0].afterid - 1].ishit = true;
-        cnt[0].clicknum = 0;
-        cnt[0].hitnum += 1;
-      }
-
+    turnOver: function (id) {
       // 2枚以上はめくれない //
-      if (this.count[0].clicknum < 2) {
-        if (this.count[0].clicknum == 0) {
+      if (this.clickNum < 2) {
+        if (this.clickNum == 0) {
           // 1枚目 //
-          this.cards[id-1].isopened = true;
-          this.count[0].clicknum += 1;
-          this.count[0].beforeid = id;
-        } else if (id != this.count[0].beforeid) {
+          this.cards[id-1].isOpened = true;
+          this.clickNum += 1;
+          this.beforeId = id;
+        } else if (id != this.beforeId) {
           // 2枚目 //
-          this.cards[id-1].isopened = true;
-          this.count[0].afterid = id;
-          this.count[0].clicknum += 1;
-          this.count[0].turnnum += 1;
-          if (this.cards[this.count[0].beforeid - 1].num == this.cards[id-1].num) {
-            setTimeout(hitset, 1200, this.cards, this.count);
+          this.cards[id-1].isOpened = true;
+          this.afterId = id;
+          this.clickNum += 1;
+          this.turnNum += 1;
+          if (this.cards[this.beforeId - 1].num == this.cards[id-1].num) {
+            // 1秒後にヒットにする関数 //
+            setTimeout(() => {
+              this.cards[this.beforeId - 1].isHit = true;
+              this.cards[this.afterId - 1].isHit = true;
+              this.clickNum = 0;
+              this.hitNum += 1;
+            }, 1200);
           } else {
-            setTimeout(reset, 3000, this.cards, this.count);
+            // 3秒後に裏に戻す関数 //
+            setTimeout(() => {
+              this.cards[this.beforeId - 1].isOpened = false;
+              this.cards[this.afterId - 1].isOpened = false;
+              this.clickNum = 0;
+            }, 3000);
           }
         }
       }
@@ -163,14 +160,14 @@ export default {
     },
     // ランキング登録選択 //
     register: function () {
-      this.count[0].regflg = true;
+      this.regFlg = true;
     },
     // ランキング登録API //
     registerpost: function () {
       this.$axios
         .post('/api/v1/rankings', { 'ranking' : {
-          user_name: this.count[0].user_name,
-          try_num: this.count[0].turnnum
+          user_name: this.userName,
+          try_num: this.turnNum
         }})
         .then(function (response) {
           console.log(response)
