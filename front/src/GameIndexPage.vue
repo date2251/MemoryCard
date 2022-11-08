@@ -2,11 +2,15 @@
   <div>
     <navbar></navbar>
     <div class="content">
-      <div v-if="gameStart" class="gameareawrap"><component :is="gameStart"></component></div>
-      <div v-else class="startbtnwrap" ><button @click='ViewGameArea' class="startbtn">開始</button></div>
-      <sidebar></sidebar>
+      <div v-if="isShowGameArea" class="gameareawrap">
+        <gamearea/>
+      </div>
+      <div v-else class="startbtnwrap" >
+        <button @click='showGameArea' class="startbtn">開始</button>
+      </div>
+      <sidebar/>
     </div>
-    <footerarea></footerarea>
+    <footerarea/>
   </div>
 </template>
 
@@ -25,12 +29,12 @@ export default {
   },
   data () {
     return {
-      gameStart: ''
+      isShowGameArea: false
     }
   },
   methods: {
-    ViewGameArea(){
-      this.gameStart = "gamearea"
+    showGameArea(){
+      this.isShowGameArea = true
     }
   }
 }
