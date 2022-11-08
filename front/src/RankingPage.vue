@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar></navbar>
+    <nav-bar/>
     <div class="content">
       <table>
         <tr>
@@ -10,23 +10,23 @@
           <td>{{ rank.userName }}</td><td>{{ rank.tryNum }}</td>
         </tr>
       </table>
-      <sidebar></sidebar>
+      <side-bar/>
     </div>
-    <footerarea></footerarea>
+    <footer-area/>
   </div>
 </template>
 
 <script>
 import { deserialize } from 'deserialize-json-api'
-import navbar from './NavBar.vue'
-import sidebar from './SideBar.vue'
-import footerarea from './FooterArea.vue'
+import navBar from './NavBar.vue'
+import sideBar from './SideBar.vue'
+import footerArea from './FooterArea.vue'
 
 export default {
   components: {
-    sidebar,
-    navbar,
-    footerarea
+    sideBar,
+    navBar,
+    footerArea
   },
   data () {
     return {

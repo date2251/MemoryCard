@@ -10,7 +10,7 @@
           <div class="overlay" v-show="ruleModal">
             <div class="content">
               <p>26枚のカードが裏向きでバラバラに並べられています。プレイヤーはその中から2枚をめくり、その2枚が同じ番号だった場合カードが消えます。全てのカードを消す事が出来ればゲームクリアです。</p>
-              <button class="modalnav" @click="closeRule">閉じる</button>
+              <button class="modalNav" @click="closeRule">閉じる</button>
             </div>
           </div>
         </li>
@@ -20,7 +20,7 @@
           <div class="overlay" v-show="usageModal">
             <div class="content">
               <p>クリックしてカードをめくる。カードの配置を記憶する。</p>
-              <button class="modalnav" @click="closeUsage">閉じる</button>
+              <button class="modalNav" @click="closeUsage">閉じる</button>
             </div>
           </div>
         </li>
@@ -120,7 +120,7 @@ button:focus {
   background:#fff;
 }
 
-.modalnav {
+.modalNav {
   width: 100px;
   height: 50px;
 }
