@@ -1,31 +1,31 @@
 <template>
   <div>
-    <navbar></navbar>
+    <nav-bar/>
     <div class="content">
       <div v-if="isShowGameArea" class="gameareawrap">
-        <gamearea/>
+        <game-area/>
       </div>
       <div v-else class="startbtnwrap" >
         <button @click='showGameArea' class="startbtn">開始</button>
       </div>
-      <sidebar/>
+      <side-bar/>
     </div>
-    <footerarea/>
+    <footer-area/>
   </div>
 </template>
 
 <script>
-import navbar from './NavBar.vue'
-import sidebar from './SideBar.vue'
-import gamearea from './GameArea.vue'
-import footerarea from './FooterArea.vue'
+import navBar from './NavBar.vue'
+import sideBar from './SideBar.vue'
+import gameArea from './GameArea.vue'
+import footerArea from './FooterArea.vue'
 
 export default {
   components: {
-    gamearea,
-    sidebar,
-    navbar,
-    footerarea
+    gameArea,
+    sideBar,
+    navBar,
+    footerArea
   },
   data () {
     return {
