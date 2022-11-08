@@ -6,21 +6,21 @@
       <table>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div @click='isClick(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].isHit}'>
+            <div @click='turnOver(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].isHit}'>
               <img :src="cards[i-1].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div @click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].isHit}'>
+            <div @click='turnOver(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].isHit}'>
               <img :src="cards[i+8].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 8" :key="i">
-            <div @click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].isHit}'>
+            <div @click='turnOver(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].isHit}'>
               <img :src="cards[i+17].src">
             </div>
           </td>
@@ -121,21 +121,7 @@ export default {
     console.log(this.cards.map((obj) => obj.num));
   },
   methods: {
-    isClick: function (id) {
-      // 3秒後に裏にする関数 //
-      var reset = function (cards, cnt) {
-        cards[cnt[0].beforeId - 1].isOpened = false;
-        cards[cnt[0].afterId - 1].isOpened = false;
-        cnt[0].clickNum = 0;
-      }
-      // 1秒後にヒットにする関数 //
-      var hitset = function (cards, cnt) {
-        cards[cnt[0].beforeId - 1].isHit = true;
-        cards[cnt[0].afterId - 1].isHit = true;
-        cnt[0].clickNum = 0;
-        cnt[0].hitNum += 1;
-      }
-
+    turnOver: function (id) {
       // 2枚以上はめくれない //
       if (this.clickNum < 2) {
         if (this.clickNum == 0) {
@@ -150,9 +136,20 @@ export default {
           this.clickNum += 1;
           this.turnNum += 1;
           if (this.cards[this.beforeId - 1].num == this.cards[id-1].num) {
-            setTimeout(hitset, 1200, this.cards, this.count);
+            // 1秒後にヒットにする関数 //
+            setTimeout(() => {
+              this.cards[this.beforeId - 1].isHit = true;
+              this.cards[this.afterId - 1].isHit = true;
+              this.clickNum = 0;
+              this.hitNum += 1;
+            }, 1200);
           } else {
-            setTimeout(reset, 3000, this.cards, this.count);
+            // 3秒後に裏に戻す関数 //
+            setTimeout(() => {
+              this.cards[this.beforeId - 1].isOpened = false;
+              this.cards[this.afterId - 1].isOpened = false;
+              this.clickNum = 0;
+            }, 3000);
           }
         }
       }
