@@ -2,11 +2,11 @@
   <div>
     <nav-bar/>
     <div class="content">
-      <div v-if="isShowGameArea" class="gameareawrap">
+      <div v-if="isShowGameArea" class="gameAreaWrap">
         <game-area/>
       </div>
-      <div v-else class="startbtnwrap" >
-        <button @click='showGameArea' class="startbtn">開始</button>
+      <div v-else class="startBtnWrap" >
+        <button @click='showGameArea' class="startBtn">開始</button>
       </div>
       <side-bar/>
     </div>
@@ -47,14 +47,14 @@ export default {
   padding: 0 5%;
 }
 
-.gameareawrap {
+.gameAreaWrap {
   width: 80%;
   min-height: 570px;
   padding: 10px;
   background-color: green;
 }
 
-.startbtnwrap {
+.startBtnWrap {
   width: 80%;
   height: 590px;
   padding: 10px;
@@ -62,7 +62,7 @@ export default {
   background-color: green;
 }
 
-.startbtn {
+.startBtn {
   width: 200px;
   height: 50px;
   font-size: 2em;
