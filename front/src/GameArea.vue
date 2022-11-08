@@ -6,21 +6,21 @@
       <table>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div v-on:click='isClick(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].isHit}'>
+            <div @click='isClick(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].isHit}'>
               <img :src="cards[i-1].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 9" :key="i">
-            <div v-on:click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].isHit}'>
+            <div @click='isClick(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].isHit}'>
               <img :src="cards[i+8].src">
             </div>
           </td>
         </tr>
         <tr>
           <td v-for="i in 8" :key="i">
-            <div v-on:click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].isHit}'>
+            <div @click='isClick(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].isHit}'>
               <img :src="cards[i+17].src">
             </div>
           </td>
