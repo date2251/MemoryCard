@@ -1,5 +1,5 @@
 build:
   docker:
-    web: api/Dockerfile
+    web: Dockerfile
 run:
   web: bundle install
