@@ -22,14 +22,14 @@ services:
     ports:
       - '3306:3306'
   front:
-    build: ./front
+    build: ./front # Dockerfileは開発環境用のもののみ
     volumes:
       - ./front:/app
     ports:
       - '8080:8080'
     tty: true
     stdin_open: true
-    command: npm run serve
+    command: yarn serve
 
 volumes:
   mysql_data:
