@@ -3,15 +3,12 @@
     <!-- クリア前 -->
     <div v-if ='hitNum < 13'>
       <div style="color: white">試行回数：{{turnNum}}</div>
-      <table>
-        <tr>
-          <td v-for="(card, index) in cards" :key="card.id">
-            <div @click='turnOver(index + 1)' v-bind:class='{card: !card.isOpened, opened:card.isOpened, hitted:card.isHit}'>
-              <img :src="imageSrouce(card.id)">
-            </div>
-          </td>
-        </tr>
-      </table>
+        <div
+          v-for="(card, index) in cards" :key="card.id"
+          @click='turnOver(index + 1)' v-bind:class='{card: !card.isOpened, opened:card.isOpened, hitted:card.isHit}'
+        >
+          <img :src="imageSrouce(card.id)">
+        </div>
     </div>
     <!-- クリア後 -->
     <div v-else>
@@ -144,7 +141,6 @@ p {
 
 img {
   width: 100%;
-  vertical-align: middle;
 }
 
 .card {
@@ -152,7 +148,8 @@ img {
   background-repeat: no-repeat;
   background-size: contain;
   background-position:center;
-  width: 100%;
+  width: 10%;
+  display: inline-block;
   content: none;
   text-indent:100%;
   white-space:nowrap;
@@ -160,6 +157,8 @@ img {
 }
 
 .opened {
+  width: 10%;
+  display: inline-block;
   transform: rotateY( 180deg );
   transition: transform 1s ease;
 }
