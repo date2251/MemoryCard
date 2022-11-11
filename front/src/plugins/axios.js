@@ -4,8 +4,8 @@ const AxiosPlugin = {}
 
 AxiosPlugin.install = function (Vue) {
   Vue.prototype.$axios = axios.create({
-    baseURL: "http://localhost:3000/",
-//    baseURL: process.env.VUE_APP_API_BASE_URL, .envファイルにURLを持たせた方がエンドポイントの切り替えに便利
+    baseURL: process.env.VUE_APP_API_URL || 'http://localhost:3000', // Netlifyで設定
+    // baseURL: process.env.VUE_APP_API_BASE_URL, .envファイルにURLを持たせた方がエンドポイントの切り替えに便利
     headers: {
       'Content-Type': 'application/json'
     },
