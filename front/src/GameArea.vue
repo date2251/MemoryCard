@@ -5,23 +5,9 @@
       <div style="color: white">試行回数：{{turnNum}}</div>
       <table>
         <tr>
-          <td v-for="i in 9" :key="i">
-            <div @click='turnOver(i)' v-bind:class='{card: !cards[i-1].isOpened, opened:cards[i-1].isOpened, hitted:cards[i-1].isHit}'>
-              <img :src="cards[i-1].src">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td v-for="i in 9" :key="i">
-            <div @click='turnOver(i+9)' v-bind:class='{card: !cards[i+8].isOpened, opened:cards[i+8].isOpened, hitted:cards[i+8].isHit}'>
-              <img :src="cards[i+8].src">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td v-for="i in 8" :key="i">
-            <div @click='turnOver(i+18)' v-bind:class='{card: !cards[i+17].isOpened, opened:cards[i+17].isOpened, hitted:cards[i+17].isHit}'>
-              <img :src="cards[i+17].src">
+          <td v-for="(card, index) in cards" :key="card.id">
+            <div @click='turnOver(index + 1)' v-bind:class='{card: !card.isOpened, opened:card.isOpened, hitted:card.isHit}'>
+              <img :src="imageSrouce(card.id)">
             </div>
           </td>
         </tr>
@@ -45,82 +31,47 @@
 </template>
 
 <script>
-import image1 from "./assets/images/1.png"
-import image2 from "./assets/images/2.png"
-import image3 from "./assets/images/3.png"
-import image4 from "./assets/images/4.png"
-import image5 from "./assets/images/5.png"
-import image6 from "./assets/images/6.png"
-import image7 from "./assets/images/7.png"
-import image8 from "./assets/images/8.png"
-import image9 from "./assets/images/9.png"
-import image10 from "./assets/images/10.png"
-import image11 from "./assets/images/11.png"
-import image12 from "./assets/images/12.png"
-import image13 from "./assets/images/13.png"
-import image14 from "./assets/images/14.png"
-import image15 from "./assets/images/15.png"
-import image16 from "./assets/images/16.png"
-import image17 from "./assets/images/17.png"
-import image18 from "./assets/images/18.png"
-import image19 from "./assets/images/19.png"
-import image20 from "./assets/images/20.png"
-import image21 from "./assets/images/21.png"
-import image22 from "./assets/images/22.png"
-import image23 from "./assets/images/23.png"
-import image24 from "./assets/images/24.png"
-import image25 from "./assets/images/25.png"
-import image26 from "./assets/images/26.png"
+import { deserialize } from 'deserialize-json-api'
 
 export default {
   data: function () {
     return {
-      cards: [
-        {id: 1, num: 1, mark: 'spade', isOpened: false, isHit: false, src: image1},
-        {id: 2, num: 2, mark: 'spade', isOpened: false, isHit: false, src: image2},
-        {id: 3, num: 3, mark: 'spade', isOpened: false, isHit: false, src: image3},
-        {id: 4, num: 4, mark: 'spade', isOpened: false, isHit: false, src: image4},
-        {id: 5, num: 5, mark: 'spade', isOpened: false, isHit: false, src: image5},
-        {id: 6, num: 6, mark: 'spade', isOpened: false, isHit: false, src: image6},
-        {id: 7, num: 7, mark: 'spade', isOpened: false, isHit: false, src: image7},
-        {id: 8, num: 8, mark: 'spade', isOpened: false, isHit: false, src: image8},
-        {id: 9, num: 9, mark: 'spade', isOpened: false, isHit: false, src: image9},
-        {id: 10, num: 10, mark: 'spade', isOpened: false, isHit: false, src: image10},
-        {id: 11, num: 11, mark: 'spade', isOpened: false, isHit: false, src: image11},
-        {id: 12, num: 12, mark: 'spade', isOpened: false, isHit: false, src: image12},
-        {id: 13, num: 13, mark: 'spade', isOpened: false, isHit: false, src: image13},
-        {id: 14, num: 1, mark: 'club', isOpened: false, isHit: false, src: image14},
-        {id: 15, num: 2, mark: 'club', isOpened: false, isHit: false, src: image15},
-        {id: 16, num: 3, mark: 'club', isOpened: false, isHit: false, src: image16},
-        {id: 17, num: 4, mark: 'club', isOpened: false, isHit: false, src: image17},
-        {id: 18, num: 5, mark: 'club', isOpened: false, isHit: false, src: image18},
-        {id: 19, num: 6, mark: 'club', isOpened: false, isHit: false, src: image19},
-        {id: 20, num: 7, mark: 'club', isOpened: false, isHit: false, src: image20},
-        {id: 21, num: 8, mark: 'club', isOpened: false, isHit: false, src: image21},
-        {id: 22, num: 9, mark: 'club', isOpened: false, isHit: false, src: image22},
-        {id: 23, num: 10, mark: 'club', isOpened: false, isHit: false, src: image23},
-        {id: 24, num: 11, mark: 'club', isOpened: false, isHit: false, src: image24},
-        {id: 25, num: 12, mark: 'club', isOpened: false, isHit: false, src: image25},
-        {id: 26, num: 13, mark: 'club', isOpened: false, isHit: false, src: image26}
-      ],
+      cards: [],
       // カウント変数 //
       clickNum: 0, beforeId: 0, afterId: 0, turnNum: 0, hitNum: 0,
       regFlg: false,
       userName: ''
     }
   },
-  created () {
-    // 順番をランダム化 //
-    for (let i=this.cards.length; i>0; i--) {
-      let rnd = Math.floor(Math.random() * (this.cards.length - 1));
-      let tmp = this.cards[i-1];
-      this.cards[i-1] = this.cards[rnd];
-      this.cards[rnd] = tmp;
-    }
-    // 答え //
-    console.log(this.cards.map((obj) => obj.num));
+  mounted () {
+    this.fetchCards();
   },
   methods: {
+    fetchCards: function () {
+      this.$axios
+        .get('/api/v1/cards')
+        .then(({ data }) => {
+          this.cards = deserialize(data).data;
+          this.shuffleCards();
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    },
+    shuffleCards: function () {
+      // 順番をランダム化 //
+      for (let i=this.cards.length; i>0; i--) {
+        let rnd = Math.floor(Math.random() * (this.cards.length - 1));
+        let tmp = this.cards[i-1];
+        this.cards[i-1] = this.cards[rnd];
+        this.cards[rnd] = tmp;
+      }
+      // 答え //
+      console.log(this.cards.map((obj) => obj.num));
+    },
+    imageSrouce: function (num) {
+      return require('./assets/images/' + String(num) + '.png');
+    },
     turnOver: function (id) {
       // 2枚以上はめくれない //
       if (this.clickNum < 2) {
@@ -169,8 +120,7 @@ export default {
           user_name: this.userName,
           try_num: this.turnNum
         }})
-        .then(function (response) {
-          console.log(response)
+        .then(() => {
           window.location.replace('/#/ranking')
         })
         .catch(function (error) {
