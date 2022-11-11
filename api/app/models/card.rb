@@ -1,0 +1,30 @@
+class Card < ActiveHash::Base
+  self.data = [
+    {id: 1, num: 1, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/1.png'},
+    {id: 2, num: 2, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/2.png'},
+    {id: 3, num: 3, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/3.png'},
+    {id: 4, num: 4, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/4.png'},
+    {id: 5, num: 5, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/5.png'},
+    {id: 6, num: 6, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/6.png'},
+    {id: 7, num: 7, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/7.png'},
+    {id: 8, num: 8, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/8.png'},
+    {id: 9, num: 9, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/9.png'},
+    {id: 10, num: 10, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/10.png'},
+    {id: 11, num: 11, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/11.png'},
+    {id: 12, num: 12, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/12.png'},
+    {id: 13, num: 13, mark: 'spade', is_opened: false, is_hit: false, src: './assets/images/13.png'},
+    {id: 14, num: 1, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/14.png'},
+    {id: 15, num: 2, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/15.png'},
+    {id: 16, num: 3, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/16.png'},
+    {id: 17, num: 4, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/17.png'},
+    {id: 18, num: 5, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/18.png'},
+    {id: 19, num: 6, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/19.png'},
+    {id: 20, num: 7, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/20.png'},
+    {id: 21, num: 8, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/21.png'},
+    {id: 22, num: 9, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/22.png'},
+    {id: 23, num: 10, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/23.png'},
+    {id: 24, num: 11, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/24.png'},
+    {id: 25, num: 12, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/25.png'},
+    {id: 26, num: 13, mark: 'club', is_opened: false, is_hit: false, src: './assets/images/26.png'}
+  ]
+end
