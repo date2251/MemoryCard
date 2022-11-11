@@ -3,7 +3,7 @@ module Api
     class CardsController < ApiController
       def index
         cards = Card.all
-        render json: cards
+        render json: CardSerializer.new(cards).serializable_hash
       end
     end
   end
