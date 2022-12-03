@@ -7,6 +7,7 @@ module Api
       end
 
       def index
+        response.headers['Access-Control-Allow-Origin'] = '*'
         rankings = Ranking.select(:user_name, :try_num).distinct.order(try_num: :asc)
         render json: RankingSerializer.new(rankings).serializable_hash
       end
