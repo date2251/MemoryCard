@@ -35,11 +35,7 @@ export default {
   },
   mounted () {
     this.$axios
-      .get('/api/v1/rankings', {
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      })
+      .get('/api/v1/rankings')
       .then(({ data }) => {
         this.rankings = deserialize(data).data
       })
