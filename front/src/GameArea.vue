@@ -24,6 +24,7 @@
         </form>
       </div>
     </div>
+    <div>画像が表示されるまで少々時間が掛かりますmm</div>
   </div>
 </template>
 
