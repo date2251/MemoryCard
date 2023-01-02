@@ -54,5 +54,5 @@ production:
   adapter: mysql2
   database: app_production
   username: app
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  password: A9NAH6ihb4t7pkWhIZrC
   host: 'containers-us-west-59.railway.app'
